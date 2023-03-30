@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Bugtracker</title>
+</head>
+
+<body>
+    <div class="d-flex cont">
+        <img class="img bug" src="assets/images/image 1.png" height="70%">
+        <div class="background d-flex flex-column flex-wrap justify-content-center align-content-center">
+            <p class="studio copy-disable">Rewive Studio</p>
+            <div class="reg copy-disable">
+                <form class="d-flex flex-column" method="POST" action="/product">
+                    <div class="position-relative m-4">
+                        <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="50" style="height: 2px;">
+                            <div class="progress-bar bg-green" style="width: 50%" id="progress"></div>
+                            <div class="progress-bar bg-green" style="width: 50%" id="progress-selector"></div>
+                        </div>
+                        <button type="button"
+                            class="position-absolute top-0 start-0 translate-middle btn btn-sm bg-green rounded-pill bg-gradient"
+                            style="width: 2rem; height:2rem;" id="b1">1</button>
+                        <button type="button"
+                            class="position-absolute top-0 start-50 translate-middle btn btn-sm bg-green rounded-pill bg-gradient"
+                            style="width: 2rem; height:2rem;" id="b2">2</button>
+                        <button type="button"
+                            class="position-absolute top-0 start-100 translate-middle btn btn-sm bg-green rounded-pill bg-gradient"
+                            style="width: 2rem; height:2rem;" id="b3">3</button>
+                    </div>
+                    <input class="outline-form" name="product" type="text" placeholder="ID продукта" id="product" autocomplete="off">
+                    <button class="outline-btn outdim copy-disable" type="submit" id="out">Присоедениться</button>
+                    <div class="line"></div>
+                    <button class="inline-btn copy-disable" type="button" id="create">Пропустить</button>
+                </form>
+                <form action="/" method="GET" style="display: none" id="singform"></form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="js/presure.js"></script>
+    </div>
+</body>
+
+</html>

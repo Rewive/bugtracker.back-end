@@ -1,0 +1,229 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "REST API bugtracker",
+        "version": "1.0.0",
+        "title": "Bug tracker",
+        "contact": {
+            "email": "Iamlopatinivan@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Запрос домашней страницы",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "text/html"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "source not found"
+                    }
+                }
+            }
+        },
+        "/theme": {
+            "get": {
+                "tags": [
+                    "Theme"
+                ],
+                "summary": "Запрос темы для обсуждений",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "text/html"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "source not found"
+                    }
+                }
+            }
+        },
+        "/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Запрос карточек со статьями и новостями",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "text/html"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "source not found"
+                    }
+                }
+            }
+        },
+        "/article/id{id}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Запрос конкретной карточки по ID",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "text/html"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "definitions": {
+                    "News": {
+                        "required": [
+                            "id"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "uniqueItems": true
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID конкретной статьи/новости",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "source not found"
+                    }
+                }
+            }
+        },
+        "/api/article": {
+            "post": {
+                "tags": [
+                    "API"
+                ],
+                "description": "Получение статьи по ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "body",
+                        "description": "ID конкретной статьи/новости, значение all возвращает все имеющиеся статьи/новости",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "value"
+                            ],
+                            "properties": {
+                                "news": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "enum": [
+                                        "all"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "schemes": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Source not found"
+                    }
+                }
+            }
+        },
+        "/questions": {
+            "get": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Запрос чато задаваемых вопросов",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "text/html"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "source not found"
+                    }
+                }
+            }
+        },
+        "/Profile": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Запрос профиля",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "text/html"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "source not found"
+                    }
+                }
+            }
+        }
+    }
+}

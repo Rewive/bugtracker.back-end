@@ -1,0 +1,35 @@
+{
+  "name": "bugtracker",
+  "version": "1.0.0",
+  "description": "rewive inc. site",
+  "main": "app.js",
+  "scripts": {
+    "build": "npm install && nodemon app.js",
+    "start": "nodemon app.js",
+    "prod": "npm install && pm2 start app.js",
+    "stop": "pm2 delete all"
+  },
+  "keywords": [],
+  "author": "Rewive Std.",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.30.3",
+    "config": "^3.3.9",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.1.0",
+    "mongoose": "^7.0.3",
+    "pm2": "^5.2.2",
+    "swagger-ui-express": "^4.6.2",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
+  }
+}

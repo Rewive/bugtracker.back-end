@@ -1,0 +1,222 @@
+@import 'https://fonts.googleapis.com/css?family=Baloo+Paaji';
+
+body {
+    background-color: azure;
+}
+
+input[type="password"]::-webkit-input-placeholder {
+    color: #ffffff;
+}
+
+input[type="password"]::-moz-placeholder {
+    color: #ffffff;
+}
+
+input[type="login"]::-webkit-input-placeholder {
+    color: #ffffff;
+}
+
+input[type="login"]::-moz-placeholder {
+    color: #ffffff;
+}
+
+input {
+    outline: 0 !important;
+    border: 3px solid #2D6CD2;
+}
+
+.inplace::-moz-placeholder {
+    color: #757575 !important;
+}
+
+.inplace::-webkit-input-placeholder {
+    color: #757575 !important;
+}
+
+.cont {
+    width: 100vw;
+    height: 100vh;
+}
+
+.background {
+    background: linear-gradient(164.79deg, #2D303A 0%, #121721 100%);
+    width: 35vw;
+}
+
+.bug {
+    width: 65vw;
+    object-fit: cover;
+    height: 100vh;
+}
+
+.studio {
+    font-family: 'Baloo Paaji', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.reg {
+    align-items: center;
+    display: flex;
+}
+
+.outline-form {
+    margin-top: 8px;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: 3px solid #4287F7;
+    padding: 6px 40px;
+    border-radius: 20px;
+    background-color: #ffffff00;
+    color: #ffffff;
+}
+
+.inline-btn {
+    margin-top: 24px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 7px;
+    border: none;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #4287F7 0%, #2D6CD2 100%);
+    color: #ffffff;
+}
+
+.inline-btn:hover {
+    background: #ffffff00;
+    background: linear-gradient(180deg, #2464ca 0%, #124ba6 100%);
+}
+
+.outline-btn {
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 7px;
+    border: 3px solid #4287F7;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #4287F7 0%, #4287F7 0.01%, #2D6CD2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.outline-btn:hover {
+    border: 3px solid #5393fb;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #3f7bdd 0%, #4986e8 0.01%, #4a86e6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.vk {
+    margin-top: 8px;
+    border: none;
+    background: #ffffff00;
+    width: 32px;
+    border-radius: 50%;
+}
+
+.vkd {
+    margin-top: 8px;
+    border: none;
+    background: #ffffff00;
+    border-radius: 50%;
+}
+
+.line {
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 3px;
+    background-color: #4287F7;
+}
+
+.dis {
+    pointer-events: none;
+    background: #6c757d !important;
+}
+
+.dim {
+    background: #6c757d !important;
+}
+
+.outdim {
+    pointer-events: none;
+    background: #6c757d !important;
+    border: 3px solid #6c757d !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.copy-disable {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.inline-btn-select {
+    margin-top: 8px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 7px;
+    border: none;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #4287F7 0%, #2D6CD2 100%);
+    color: #ffffff;
+}
+
+.select-txt {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.bg-green {
+    background-color: #27AE60 !important;
+    color: #FFFFFF !important;
+    cursor: default !important;
+}
+
+.bg-green:hover {
+    color: #FFFFFF !important;
+}
+
+.bg-blue {
+    background-color: #2F80ED !important;
+    color: #FFFFFF !important;
+    cursor: default !important;
+}
+
+.bg-blue:hover {
+    color: #FFFFFF !important;
+}
