@@ -11,11 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.disable('x-powered-by');
 
-app.set('views', 'views');
-app.set('view engine', 'hbs');
-
 app.use('/', require('./main/router'));
 app.use('/', require('./product/router'));
-
 
 app.listen(PORT, () => console.log(`App has been started! \nURL: http://localhost:${PORT}`));

@@ -1,5 +1,6 @@
 const express = require('express');
-const db = require('../controllers/db');
+const Product = require('../models/Product');
+const User = require('../models/Users');
 const ObjectId = require('mongodb').ObjectId;
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -7,7 +8,7 @@ const secret = config.get('token');
 
 getUserData = (check) => {
     const { name, lastname, login, job, rujob } = check;
-    return { name: name.toString(), lastname: lastname.toString(), login: login.toString(), job: job.toString(), rujob: rujob.toString() };
+    return { name: name, lastname: lastname, login: login, job: job, rujob: rujob };
 }
 
 module.exports = async (req, res) => {
@@ -17,20 +18,20 @@ module.exports = async (req, res) => {
     try {
         const data = jwt.verify(token, secret);
         const id = new ObjectId(data.id);
-        const check = await db.UserGet({ _id: id, token: token });
+        const check = await User.get({ _id: id, token: token });
         if (check) {
-            const checkprod = await db.ProdGet({ product });
-            const checkuser = await db.ProdGet({ product, 'members.login': check.login.toString() });
+            const checkprod = await Product.get({ product });
+            const checkuser = await Product.get({ product, 'members.login': check.login.toString() });
             if (checkprod && !checkuser) {
-                await db.ProdSet({ product }, { $push: { members: getUserData(check) } });
-                const checkprod = await db.ProdGet({ product });
+                await Product.set({ product }, { $push: { members: getUserData(check) } });
+                const checkprod = await Product.get({ product });
                 return res.status(200).json(checkprod)
             } else if (checkuser) {
-                await db.ProdSet({ product, 'members.login': check.login.toString() }, { $set: { "members.$": getUserData(check) } });
-                const checkprod = await db.ProdGet({ product });
+                await Product.set({ product, 'members.login': check.login.toString() }, { $set: { "members.$": getUserData(check) } });
+                const checkprod = await Product.get({ product });
                 return res.status(200).json(checkprod)
             }
-            res.status(400).json({error: "Bad Request", msg: "Нейдействительный ID"});
+            res.status(400).json({error: "Bad Request", msg: "Данного продукта не существует"});
         }
     } catch (err) {
         console.log(err);

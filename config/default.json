@@ -1,5 +1,5 @@
 {
     "token": "r8stdh12hsjiwkooxkkwnwko283u1h2hnsn",
     "port": 3000,
-    "mongoUri": "mongodb://127.0.0.1:27017/"
+    "mongoUri": "mongodb://127.0.0.1:27017/bugtracker"
 }

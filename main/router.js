@@ -7,24 +7,20 @@ const setData = require('./setData');
 const setJob = require('./setJob');
 const signIn = require('./SignIn');
 
-router.get('/', checkAuth, async (req, res) => {
-    res.render(`authorization`);
+router.post('/api/main/auth/', checkAuth, async (req, res) => {
+    res.status(200).json({ message: 'Authorization' });
 });
 
-router.post('/sign', checkAuth, async (req, res) => {
-    res.render(`signUp`);
+router.post('/api/main/clear/', async (req, res) => {
+    res.clearCookie('secid').status(200).json({ message: 'OK' });;
 });
 
-router.post('/exit', async (req, res) => {
-    res.clearCookie('secid').redirect(`/`);
-});
+router.post('/api/main/signin/', validateAuth, signIn);
 
-router.post('/', validateAuth, signIn);
+router.post('/api/main/signup/', validateAuth, setData);
 
-router.post('/signup', validateAuth, setData);
+router.post('/api/main/signup/verify/', validateAuth, setAuth);
 
-router.post('/verify', validateAuth, setAuth);
-
-router.post('/select', validateAuth, setJob);
+router.post('/api/main/job/', validateAuth, setJob);
 
 module.exports = router;
