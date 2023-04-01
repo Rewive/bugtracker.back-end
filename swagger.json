@@ -8,219 +8,313 @@
             "email": "Iamlopatinivan@gmail.com"
         },
         "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "MIT",
+            "url": "https://github.com/Rewive/bugtracker.back-end/blob/main/LICENSE"
         }
     },
     "schemes": [
         "http"
     ],
     "paths": {
-        "/": {
-            "get": {
-                "tags": [
-                    "Home"
-                ],
-                "summary": "Запрос домашней страницы",
-                "description": "",
-                "operationId": "",
-                "consumes": [
-                    "text/html"
-                ],
-                "produces": [
-                    "text/html"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
-                    "404": {
-                        "description": "source not found"
-                    }
-                }
-            }
-        },
-        "/theme": {
-            "get": {
-                "tags": [
-                    "Theme"
-                ],
-                "summary": "Запрос темы для обсуждений",
-                "description": "",
-                "operationId": "",
-                "consumes": [
-                    "text/html"
-                ],
-                "produces": [
-                    "text/html"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
-                    "404": {
-                        "description": "source not found"
-                    }
-                }
-            }
-        },
-        "/news": {
-            "get": {
-                "tags": [
-                    "News"
-                ],
-                "summary": "Запрос карточек со статьями и новостями",
-                "description": "",
-                "operationId": "",
-                "consumes": [
-                    "text/html"
-                ],
-                "produces": [
-                    "text/html"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "404": {
-                        "description": "source not found"
-                    }
-                }
-            }
-        },
-        "/article/id{id}": {
-            "get": {
-                "tags": [
-                    "News"
-                ],
-                "summary": "Запрос конкретной карточки по ID",
-                "description": "",
-                "operationId": "",
-                "consumes": [
-                    "text/html"
-                ],
-                "produces": [
-                    "text/html"
-                ],
-                "definitions": {
-                    "News": {
-                        "required": [
-                            "id"
-                        ],
-                        "properties": {
-                            "id": {
-                                "type": "integer",
-                                "uniqueItems": true
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "ID конкретной статьи/новости",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "404": {
-                        "description": "source not found"
-                    }
-                }
-            }
-        },
-        "/api/article": {
+        "/api/main/auth/": {
             "post": {
                 "tags": [
                     "API"
                 ],
-                "description": "Получение статьи по ID",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "body",
-                        "description": "ID конкретной статьи/новости, значение all возвращает все имеющиеся статьи/новости",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "name",
-                                "value"
-                            ],
-                            "properties": {
-                                "news": {
-                                    "type": "string",
-                                    "format": "string",
-                                    "enum": [
-                                        "all"
-                                    ]
-                                }
-                            }
-                        }
-                    }
+                "summary": "Запросы на проверку авторизации (только для роута /)",
+                "description": "",
+                "operationId": "",
+                "consumes": [
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "schemes": [],
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Authorization"
                     },
-                    "404": {
-                        "description": "Source not found"
+                    "401": {
+                        "description": "Unauthorized"
                     }
                 }
             }
         },
-        "/questions": {
-            "get": {
+        "/api/main/clear/": {
+            "post": {
                 "tags": [
-                    "Questions"
+                    "API"
                 ],
-                "summary": "Запрос чато задаваемых вопросов",
+                "summary": "Запрос на отчистку cookie (для выхода)",
                 "description": "",
                 "operationId": "",
                 "consumes": [
-                    "text/html"
+                    "application/json"
                 ],
                 "produces": [
-                    "text/html"
+                    "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation"
-                    },
-                    "404": {
-                        "description": "source not found"
+                        "description": "OK"
                     }
                 }
             }
         },
-        "/Profile": {
-            "get": {
+        "/api/main/signin/": {
+            "post": {
                 "tags": [
-                    "Profile"
+                    "API"
                 ],
-                "summary": "Запрос профиля",
-                "description": "",
-                "operationId": "",
+                "summary": "Вход в учётную запись",
+                "description": "Возвращает статус и сообщение об успехе или ошибках (JSON).",
                 "consumes": [
-                    "text/html"
+                    "application/json"
                 ],
                 "produces": [
-                    "text/html"
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Параметры для входа в учётную запись",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "login": {
+                                    "type": "string",
+                                    "description": "Логин пользователя"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "Пароль пользователя"
+                                }
+                            },
+                            "required": [
+                                "login",
+                                "password"
+                            ]
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "OK"
                     },
-                    "404": {
-                        "description": "source not found"
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/main/signup/": {
+            "post": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Регистрация: отправка первичных данных",
+                "description": "Возвращает статус и сообщение об успехе или ошибках (JSON).",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Параметры для регистрации",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "description": "Имя пользователя"
+                                },
+                                "lastname": {
+                                    "type": "string",
+                                    "description": "Фамилия пользователя"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "description": "E-mail пользователя"
+                                }
+                            },
+                            "required": [
+                                "name",
+                                "lastname",
+                                "email"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/main/signup/verify/": {
+            "post": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Регистрация: валидация аккаунта логином и паролем, назначение токена пользователю",
+                "description": "Возвращает статус и сообщение об успехе или ошибках (JSON).",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Параметры для регистрации",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "login": {
+                                    "type": "string",
+                                    "description": "Имя пользователя"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "Фамилия пользователя"
+                                },
+                                "id": {
+                                    "type": "string",
+                                    "description": "id выданое предыдущим запросом. !Важно не храните ID в cookie!"
+                                }
+                            },
+                            "required": [
+                                "login",
+                                "password",
+                                "id"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/main/job/": {
+            "post": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Выдача роли пользователю",
+                "description": "Возвращает статус и сообщение об успехе или ошибках (JSON).",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Параметры для роли",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "select": {
+                                    "type": "string",
+                                    "description": "Сокращение роли. Может принимать 4 значения: `leader`, `pm`, `qa`, `dev`",
+                                    "enum": [
+                                        "leader",
+                                        "pm",
+                                        "qa",
+                                        "dev"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "select"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/product/id/members/": {
+            "post": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Запрос на присоединение к продукту по ID или получуению детализации, по количеству участников и их роли",
+                "description": "Возвращает статус и сообщение об успехе или ошибках (JSON).",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Параметры для регистрации",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "product": {
+                                    "type": "string",
+                                    "description": "ID продукта"
+                                }
+                            },
+                            "required": [
+                                "product"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     }
                 }
             }

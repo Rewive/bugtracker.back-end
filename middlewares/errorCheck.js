@@ -48,8 +48,9 @@ const errors = {
     499: 'Client Closed Request'
 };
 
-module.exports = async (req, res) => {
-        const code = parseInt(req.params.code);
+module.exports = async (err, req, res) => {
+        console.log(err)
+        const code = err;
         if (errors[code]) return res.status(200).json({ code, message: errors[code] });
         res.status(404).json({ message: "Not Found" });
 }

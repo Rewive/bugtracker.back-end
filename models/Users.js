@@ -17,7 +17,7 @@ exports.get = async (data) => {
     try {
         return await User.findOne(data);
     } catch (err) {
-        console.log(err);
+        console.log({error: 'DB error, check connection'});
     }
 };
 
@@ -25,7 +25,7 @@ exports.set = async (find, set) => {
     try {
         return await User.updateOne(find, set);
     } catch (err) {
-        console.log(err);
+        console.log({error: 'DB error, check connection'});
     }
 };
 
@@ -34,6 +34,6 @@ exports.insert = async (insert) => {
         const user = new User(insert);
         return await user.save();
     } catch (err) {
-        console.log(err);
+        console.log({error: 'DB error, check connection'});
     }
 };
